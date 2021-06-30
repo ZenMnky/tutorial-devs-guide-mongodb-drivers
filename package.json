@@ -1,0 +1,32 @@
+{
+  "name": "drivers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon --exec 'mocha -R'",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZenMnky/tutorial-devs-guide-mongodb-drivers.git"
+  },
+  "author": "Justin ZenMnky Hager",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZenMnky/tutorial-devs-guide-mongodb-drivers/issues"
+  },
+  "homepage": "https://github.com/ZenMnky/tutorial-devs-guide-mongodb-drivers#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "mocha": "^9.0.1",
+    "mongoose": "^5.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}
