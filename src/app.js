@@ -2,12 +2,12 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const helmet = require('helmet');
-const driverRouter = require('./routes/driverRoutes');
+const routes = require('./routes/routes');
 
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-app.get('/api', driverRouter);
+routes(app);
 
 module.exports = app;
