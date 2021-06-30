@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon --exec 'mocha -R'",
+    "test": "nodemon --exec 'mocha --recursive'",
     "start": "node src/server.js",
     "dev": "nodemon src/server.js"
   },
@@ -27,6 +27,7 @@
     "mongoose": "^5.13.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.9"
+    "nodemon": "^2.0.9",
+    "supertest": "^6.1.3"
   }
 }

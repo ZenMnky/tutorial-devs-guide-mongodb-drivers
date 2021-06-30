@@ -16,5 +16,5 @@ db.once('open', function () {
 });
 
 app.listen(PORT, () => {
-  console.log(`Express server is listening at http://localhost:${PORT}`);
+  console.log(`Express server is listening at http://localhost:${PORT}/api`);
 });
