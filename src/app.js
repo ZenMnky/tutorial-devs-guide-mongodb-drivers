@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const helmet = require('helmet');
+const errorHandler = require('./errorHandler');
 const routes = require('./routes/routes');
 
 const { DATABASE_CONNECTION, NODE_ENV } = process.env;
@@ -26,7 +27,7 @@ db.once('open', function () {
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
-
 routes(app);
+app.use(errorHandler);
 
 module.exports = app;

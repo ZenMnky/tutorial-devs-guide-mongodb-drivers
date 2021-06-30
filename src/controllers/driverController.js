@@ -5,7 +5,7 @@ module.exports = {
   greeting(req, res) {
     res.send({ hi: 'there' });
   },
-  create(req, res) {
+  create(req, res, next) {
     let { email, driving } = req.body;
     const reqFields = { email };
     helpers.validateRequiredFields(res, reqFields);
@@ -13,6 +13,8 @@ module.exports = {
       driving = false;
     }
     const driverProps = { email, driving };
-    Driver.create(driverProps).then((driver) => res.status(201).send(driver));
+    Driver.create(driverProps)
+      .then((driver) => res.status(201).send(driver))
+      .catch(next);
   },
 };
