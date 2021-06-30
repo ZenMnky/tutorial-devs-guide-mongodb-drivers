@@ -7,17 +7,12 @@ module.exports = {
   },
   create(req, res) {
     let { email, driving } = req.body;
-
     const reqFields = { email };
-
     helpers.validateRequiredFields(res, reqFields);
-
     if (driving === undefined) {
       driving = false;
     }
-
     const driverProps = { email, driving };
-
     Driver.create(driverProps).then((driver) => res.status(201).send(driver));
   },
 };

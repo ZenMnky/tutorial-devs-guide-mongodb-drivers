@@ -5,14 +5,16 @@ const cors = require('cors');
 const helmet = require('helmet');
 const routes = require('./routes/routes');
 
-const { DATABASE_CONNECTION, PORT } = process.env;
+const { DATABASE_CONNECTION, NODE_ENV } = process.env;
 const mongoose = require('mongoose');
 
-mongoose.connect(DATABASE_CONNECTION, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-});
+if (NODE_ENV !== 'test') {
+  mongoose.connect(DATABASE_CONNECTION, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  });
+}
 
 const db = mongoose.connection;
 db.once('open', function () {
