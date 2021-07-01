@@ -5,6 +5,30 @@ module.exports = {
   greeting(req, res) {
     res.send({ hi: 'there' });
   },
+  index(req, res, next) {
+    const { lng, lat } = req.query;
+    console.log('query: ', req.query);
+    const reqFields = { lng, lat };
+    helpers.validateRequiredFields(res, reqFields);
+
+    Driver.aggregate([
+      {
+        $geoNear: {
+          near: {
+            type: 'Point',
+            coordinates: [parseFloat(lng), parseFloat(lat)],
+          },
+          distanceField: 'dist.calculated', // required
+          maxDistance: 200000, // meters
+          spherical: true,
+        },
+      },
+    ])
+      .then((drivers) => {
+        res.send(drivers);
+      })
+      .catch(next);
+  },
   create(req, res, next) {
     let { email, driving } = req.body;
     const reqFields = { email };
